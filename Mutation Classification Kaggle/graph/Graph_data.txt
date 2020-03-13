@@ -1,0 +1,42 @@
+x	  y
+
+1    454
+2    361
+3     71
+4    549
+5    194
+6    220
+7    762
+8     15
+9     30
+
+
+		NB	RF	LR	SVM
+BOW [59.69, 56.54, 62.25, 64.21]
+
+
+TFIDF [64.36, 64.81, 67.27, 66.46]
+BernoulliNB( 54.88)
+ComplementedNB( 65.56)
+
+
+
+DOC2VEC [48.12, 54.43, 49.17, 49.77]
+logloss:
+1.43062558(LR), 1.44123591(NB), 1.33629778(RF), 1.43745377(SVM)
+
+ExtraTreeClassifier( 55.03)
+LinearDiscriminantAnalysis( 49.32)
+QuadraticDiscriminantAnalysis( 44.66)
+XGBoost( 49.92)
+KNeighborsClassifier( 55.48)
+Perceptron( 50.97)
+MultiLayerPerceptronClassifier( 49.47)
+
+WORD2VEC [49.02, 65.86, 53.23, 52.48]
+logloss:
+1.34242386(LR), 1.40504836(NB), 1.05229676(RF), 1.27243243(SVM)
+ExtraTreeClassifier( 67.81)
+MultiLayerPerceptronClassifier( 52.63)
+Perceptron( 51.42)
+XGBoost( 61.35)

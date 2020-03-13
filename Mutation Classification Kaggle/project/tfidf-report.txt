@@ -1,0 +1,97 @@
+Doc 1: most cancers are characterized by increased STAT3 activation
+Doc 2: phosphorylate STAT3 levels are associated with reduced survival
+Doc 3: increased phosphorylate of STAT3 in tumors
+
+
+Let we need to search on these documents with the following query: STAT3 tumors survival
+	All these queries are free text query, let see how it goes.
+
+Step 1: Term Frequency(TF)
+TF: The number of times a term or word occurs in the doc.
+
+Document no. 1
+Doc 1 most 	cancers	are	char.	by 	incr. 	STAT3		activation
+tf      1	1		1	1	1	1	1		1
+
+Document no. 2
+Doc 2 phosph.			STAT3		levels	asso.	with	reduced	survival
+tf 	1			1		1	1	1	1		1
+
+Document no. 3
+Doc 3	incr.	Phosph.	of	STAT3		in	tumors
+tf	1	1		1	1		1	1
+
+
+Step 1: Normalization of frequency
+	In practice word count is very large and it is difficult to word with big numbers so we normalize the doc based on  the size.
+Simple trick
+Normalize Value = (Word Count)/(Total Words in DOC)
+
+ Document no. 1
+Doc 1	most 	cancers	are	char.	by 	incr. 	STAT3		activation
+tf      	0.125	0.125		0.125	0.125	0.125	0.125	0.125		 0.125
+
+Document no. 2
+Doc 2 	phosph.		STAT3		levels	asso.	with	reduced	survival
+tf 	0.142			0.142		0.142	0.142	0.142	0.142		 0.142
+
+Document no. 3
+Doc 3	incr.	Phosph.	of	STAT3		in	tumors
+tf	0.166	0.166		0.166	0.166		0.166	 0.166
+
+
+The thing for which we are doing all this is to get relevent documents matching the query. Words that are very frequent have less descriminating power, so to make less powerful these frequent words. Also less frequent more relevent or high descriminating power.
+	So we will compute the Inverse Document Frequency( IDF)
+ex.
+	idf( STAT3 ) = 1 + loge( 3/3 ) = 1
+ 
+
+
+
+
+Most
+2.098
+Cancers
+2.098
+Are
+2.098
+reduced
+2.098
+
+Char.
+2.098
+By
+2.098
+Incr.
+1.405
+survival
+2.098
+
+STAT3
+1
+Activation
+2.098
+Phosph
+1.405
+of
+2.098
+
+Levels
+2.098
+Asso.
+2.098
+With
+2.098
+tumors
+2.098
+
+Step 3: if * idf
+
+For the query : STAT3 tumors survival
+Now the if-idf score defines the importance of each word belonging to the document.
+Ex:	
+	if-idf( survival ) for doc 2 =  0.142*2.098 = 0.297
+		Doc 1		Doc 2		Doc 3
+STAT3		0.125		0.142		0.166		
+tumors		0		0		0.348
+survival	0		0.297		0		
